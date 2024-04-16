@@ -32,11 +32,11 @@ def main():
         assert os.path.exists(args.setup_cfg_path)
         with open(args.setup_cfg_path, "r") as config_file:
             setup_cfg = yaml.safe_load(config_file)
-            cfg["setup"] = setup_cfg
+            cfg["setup"] = setup_cfg["setup"]
 
-        model_cfg_path = setup_cfg["model_cfg_path"]
-        data_cfg_path = setup_cfg["data_cfg_path"]
-        trainer_cfg_path = setup_cfg["trainer_cfg_path"]
+        model_cfg_path = setup_cfg["setup"]["model_cfg_path"]
+        data_cfg_path = setup_cfg["setup"]["data_cfg_path"]
+        trainer_cfg_path = setup_cfg["setup"]["trainer_cfg_path"]
 
         assert os.path.exists(model_cfg_path)
         with open(model_cfg_path, "r") as config_file:
